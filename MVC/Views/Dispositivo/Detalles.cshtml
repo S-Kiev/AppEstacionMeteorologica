@@ -1,0 +1,91 @@
+﻿@model Dominio.Entidades.Dispositivo
+
+@{
+    ViewData["Title"] = "Detalles";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>Dispositivo</h4>
+    <hr />
+      <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+                <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+                <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+                <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Estacion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Estacion)
+        </dd>
+                <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FecAlta)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FecAlta)
+        </dd>
+                <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FecModificacion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FecModificacion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Detalle)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Detalle)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+        <dd class = "col-sm-10" id="IdValor">
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Editar" asp-route-id="@Model.Id">Editar</a> |
+    <a asp-action="Index">Volver</a>
+</div>
+
+
+
+@section Scripts{
+    <script>
+
+        window.onload = temporizador;
+
+
+        let timeout;
+
+        function temporizador() {
+          timeout = setTimeout(setValor, 5000);
+        }
+
+        function setValor() {
+            let valor = Math.random();
+            const dd = document.getElementById("IdValor");
+            dd.innerHTML = "";
+            dd.innerHTML = valor;
+            temporizador();
+        }
+    
+    </script>
+}

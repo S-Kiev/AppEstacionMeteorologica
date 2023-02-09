@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Dominio.Entidades.Estacion>
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Lista</h1>
+
+<p>
+    <a asp-action="Alta">Agreagar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Latitud)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Longitud)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Supervisor)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+       
+    @foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Latitud)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Longitud)
+        </td>
+        <td>
+             @Html.DisplayFor(modelItem => item.Supervisor.Nombre)
+        </td>
+        <td>
+            <a asp-action="DispositivosPorEstacion" asp-route-id="@item.Id">Dispositivos</a> |
+            <a asp-action="Editar" asp-route-id="@item.Id">Editar</a> |
+            <a asp-action="Detalles" asp-route-id="@item.Id">Detalle</a> |
+            <a asp-action="Eliminar" asp-route-id="@item.Id">Eliminar</a>
+        </td>
+    </tr>
+    }
+
+    </tbody>
+</table>

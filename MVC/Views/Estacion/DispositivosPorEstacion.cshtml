@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Dominio.Entidades.Dispositivo>
+@using Dominio.Entidades;
+@{
+    ViewData["Title"] = "Dispositivo por estacion";
+}
+
+<div> <a asp-action="Index">Volver</a> </div>
+
+<h1>Lista de Dispositivos de la Estacion <strong>@ViewBag.Estacion.Nombre</strong> </h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FecAlta)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+    @foreach (var item in Model) {
+    <tr>
+       <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tipo.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estacion.Nombre)
+        </td>
+        <td>
+             @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+             @Html.DisplayFor(modelItem => item.FecAlta)
+        </td>
+        <!--VALOR-->
+        <td>
+           <a asp-action="Detalles" asp-controller="Dispositivo" asp-route-id="@item.Id">Detalle</a>
+        </td>
+    </tr>
+    }
+
+    </tbody>
+</table>
